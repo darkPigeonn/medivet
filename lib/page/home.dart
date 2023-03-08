@@ -64,7 +64,7 @@ class _HomePageState extends State<HomePage> {
                     child: SizedBox(
                       child: ElevatedButton(
                         onPressed: () {},
-                        child: Text('Buat Reservasi'),
+                        child: Text('Daftar Pet'),
                       ),
                     ),
                   ),
@@ -73,25 +73,7 @@ class _HomePageState extends State<HomePage> {
                     child: SizedBox(
                       child: ElevatedButton(
                         onPressed: () {},
-                        child: Text('Buat Reservasi'),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.all(20),
-                    child: SizedBox(
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        child: Text('Buat Reservasi'),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.all(20),
-                    child: SizedBox(
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        child: Text('Buat Reservasi'),
+                        child: Text('Tagihan'),
                       ),
                     ),
                   ),
