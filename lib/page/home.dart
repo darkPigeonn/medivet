@@ -1,4 +1,6 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:medivet/page/notifikasi/notifikasi.dart';
 import 'package:medivet/page/pets/create_pet.dart';
 import 'package:medivet/page/reservations/reservations.dart';
 
@@ -24,20 +26,50 @@ class _HomePageState extends State<HomePage> {
               height: double.infinity,
               margin: EdgeInsets.only(top: size.height * 0.35),
             ),
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(
-                children: [
-                  _HeaderSection(),
-                  SizedBox(
-                    height: 40,
-                  ),
-                  _PetSection(),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  _MenuSection(),
-                ],
+            SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _HeaderSection(),
+                    SizedBox(
+                      height: 40,
+                    ),
+                    Text(
+                      'Rawat hewan kesayanganmu',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    _PetSection(),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    _MenuSection(),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    _AnnouncementSection(),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Text(
+                      'Baca Artikel Terkini',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    _BlogSection()
+                  ],
+                ),
               ),
             )
           ],
@@ -100,7 +132,12 @@ class _HeaderSection extends StatelessWidget {
             ),
             Container(
               child: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => NotifikasiPage()));
+                },
                 icon: Icon(
                   Icons.notifications,
                   color: Colors.white,
@@ -180,7 +217,7 @@ class _MenuSection extends StatelessWidget {
                       children: [
                         Icon(
                           Icons.task,
-                          size: 30,
+                          size: 60,
                           color: Colors.blue,
                         ),
                         SizedBox(
@@ -216,7 +253,7 @@ class _MenuSection extends StatelessWidget {
                       children: [
                         Icon(
                           Icons.add_task,
-                          size: 30,
+                          size: 60,
                           color: Colors.blue,
                         ),
                         SizedBox(
@@ -233,6 +270,87 @@ class _MenuSection extends StatelessWidget {
           ],
         )
       ],
+    );
+  }
+}
+
+class _AnnouncementSection extends StatelessWidget {
+  const _AnnouncementSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(
+        horizontal: 20,
+        vertical: 10,
+      ),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey,
+            blurRadius: 1,
+            offset: Offset(0, 1),
+          )
+        ],
+      ),
+      child: Row(
+        children: [
+          Column(
+            children: [
+              Text(
+                'Pengumuman',
+              )
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _BlogSection extends StatelessWidget {
+  const _BlogSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    CarouselController buttonCarouselController = CarouselController();
+    List<int> list = [1, 2, 3, 4, 5];
+    return Container(
+      padding: EdgeInsets.symmetric(
+        horizontal: 20,
+        vertical: 10,
+      ),
+      height: 200,
+      width: MediaQuery.of(context).size.width,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey,
+            blurRadius: 1,
+            offset: Offset(0, 1),
+          )
+        ],
+      ),
+      child: CarouselSlider(
+        items: list
+            .map((item) => Container(
+                  child: Center(child: Text(item.toString())),
+                  color: Color.fromARGB(255, 0, 119, 255),
+                ))
+            .toList(),
+        carouselController: buttonCarouselController,
+        options: CarouselOptions(
+          autoPlay: false,
+          enlargeCenterPage: true,
+          viewportFraction: 0.9,
+          aspectRatio: 2.0,
+          initialPage: 2,
+        ),
+      ),
     );
   }
 }

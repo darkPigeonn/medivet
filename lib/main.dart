@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medivet/bloc/counter_bloc.dart';
 import 'package:medivet/page/home.dart';
 
+import 'page/auth/login.dart';
+
 Future<void> main() async {
   runApp(const MyApp());
 }
