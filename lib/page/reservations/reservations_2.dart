@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:medivet/model/pet_model.dart';
-import 'package:medivet/page/reservations/reservations_2.dart';
 
-class Reservations extends StatefulWidget {
-  const Reservations({super.key});
+class Reservations_2 extends StatefulWidget {
+  const Reservations_2({super.key});
 
   @override
-  State<Reservations> createState() => _ReservationsState();
+  State<Reservations_2> createState() => _ReservationsState_2();
 }
 
-class _ReservationsState extends State<Reservations> {
+class _ReservationsState_2 extends State<Reservations_2> {
   List<String> _selectedAnimals = [];
 
   List<String> _animals = [
@@ -82,6 +81,7 @@ class _ReservationsState extends State<Reservations> {
       bottomSheet: Container(
         width: MediaQuery.of(context).size.width,
         height: 50,
+        color: Colors.grey,
         child: Container(
           margin: EdgeInsets.symmetric(horizontal: 30),
           child: Row(
@@ -93,10 +93,7 @@ class _ReservationsState extends State<Reservations> {
               ),
               ElevatedButton(
                 child: Text('Selanjutnya'),
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (contex) => Reservations_2()));
-                },
+                onPressed: () {},
               ),
             ],
           ),
