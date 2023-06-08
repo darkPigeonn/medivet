@@ -9,7 +9,9 @@ class Reservations_2 extends StatefulWidget {
 }
 
 class _ReservationsState_2 extends State<Reservations_2> {
-  List<String> _selectedAnimals = [];
+  List<String> _listServices = [];
+
+  String _selectedServices = '';
 
   List<String> _animals = [
     'Anjing',
@@ -50,30 +52,31 @@ class _ReservationsState_2 extends State<Reservations_2> {
                 height: 20,
               ),
               Text(
-                'Silahkan Pilih Hewan Kesayangan Anda',
+                'Silahkan Pilih Layanan',
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
-              ListView.builder(
-                shrinkWrap: true,
-                itemCount: _animals.length,
-                itemBuilder: (context, index) {
-                  return CheckboxListTile(
-                    title: Text(_animals[index]),
-                    value: _selectedAnimals.contains(_animals[index]),
-                    onChanged: (value) {
-                      if (value!) {
-                        setState(() {
-                          _selectedAnimals.add(_animals[index]);
-                        });
-                      } else {
-                        setState(() {
-                          _selectedAnimals.remove(_animals[index]);
-                        });
-                      }
-                    },
-                  );
+              DropdownButtonFormField<String>(
+                value: _selectedServices,
+                onChanged: (value) {
+                  setState(() {
+                    _selectedServices = value!;
+                  });
                 },
-              )
+                items: _listServices.map((services) {
+                  return DropdownMenuItem<String>(
+                    value: services,
+                    child: Text(services.toString()),
+                  );
+                }).toList(),
+                decoration: InputDecoration(
+                  hintText: 'Silahkan Pilih Layanan',
+                  border: OutlineInputBorder(
+                    borderSide: const BorderSide(
+                        color: Color.fromARGB(255, 183, 183, 183)),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
